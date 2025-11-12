@@ -56,10 +56,10 @@ export default function ItineraryDetail({
 
   if (!item) {
     return (
-      <div className="h-full flex items-center justify-center bg-gray-50">
-        <div className="text-center text-gray-500">
+      <div className="h-full flex items-center justify-center bg-gray-50 dark:bg-gray-800">
+        <div className="text-center text-gray-500 dark:text-gray-400">
           <svg
-            className="w-16 h-16 mx-auto mb-4 text-gray-400"
+            className="w-16 h-16 mx-auto mb-4 text-gray-400 dark:text-gray-500"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -79,14 +79,14 @@ export default function ItineraryDetail({
   }
 
   return (
-    <div className="h-full bg-gray-50 flex flex-col">
+    <div className="h-full bg-gray-50 dark:bg-gray-800 flex flex-col">
       {/* Header */}
-      <div className="bg-white border-b border-gray-200 px-8 py-6 flex items-center justify-between">
+      <div className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 px-8 py-6 flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold text-gray-900">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
             {item.title || 'Untitled'}
           </h2>
-          <p className="text-sm text-gray-500 mt-1">
+          <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
             Last updated: {new Date(item.updatedAt).toLocaleString()}
           </p>
         </div>
@@ -101,7 +101,7 @@ export default function ItineraryDetail({
           )}
           <button
             onClick={handleDelete}
-            className="bg-red-50 hover:bg-red-100 text-red-700 font-medium py-2 px-4 rounded-lg transition-colors duration-200"
+            className="bg-red-50 dark:bg-red-900/20 hover:bg-red-100 dark:hover:bg-red-900/30 text-red-700 dark:text-red-400 font-medium py-2 px-4 rounded-lg transition-colors duration-200"
           >
             Delete
           </button>
@@ -115,7 +115,7 @@ export default function ItineraryDetail({
           <div>
             <label
               htmlFor="title"
-              className="block text-sm font-semibold text-gray-700 mb-2"
+              className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
             >
               Title
             </label>
@@ -125,7 +125,7 @@ export default function ItineraryDetail({
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               placeholder="e.g., Eiffel Tower Visit"
-              className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all"
+              className="w-full px-4 py-3 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all"
             />
           </div>
 
@@ -133,7 +133,7 @@ export default function ItineraryDetail({
           <div>
             <label
               htmlFor="url"
-              className="block text-sm font-semibold text-gray-700 mb-2"
+              className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
             >
               URL
             </label>
@@ -143,14 +143,14 @@ export default function ItineraryDetail({
               value={url}
               onChange={(e) => setUrl(e.target.value)}
               placeholder="https://example.com"
-              className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all"
+              className="w-full px-4 py-3 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all"
             />
             {url && (
               <a
                 href={url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-sm text-primary-600 hover:text-primary-700 mt-2"
+                className="inline-flex items-center gap-1 text-sm text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 mt-2"
               >
                 Open link
                 <svg
@@ -174,7 +174,7 @@ export default function ItineraryDetail({
           <div>
             <label
               htmlFor="address"
-              className="block text-sm font-semibold text-gray-700 mb-2"
+              className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
             >
               Address
             </label>
@@ -184,7 +184,7 @@ export default function ItineraryDetail({
               value={address}
               onChange={(e) => setAddress(e.target.value)}
               placeholder="e.g., Champ de Mars, 5 Avenue Anatole France, Paris"
-              className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all"
+              className="w-full px-4 py-3 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all"
             />
             {address && (
               <a
@@ -193,7 +193,7 @@ export default function ItineraryDetail({
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-sm text-primary-600 hover:text-primary-700 mt-2"
+                className="inline-flex items-center gap-1 text-sm text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 mt-2"
               >
                 View on map
                 <svg
@@ -217,7 +217,7 @@ export default function ItineraryDetail({
           <div>
             <label
               htmlFor="notes"
-              className="block text-sm font-semibold text-gray-700 mb-2"
+              className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
             >
               Notes
             </label>
@@ -227,7 +227,7 @@ export default function ItineraryDetail({
               onChange={(e) => setNotes(e.target.value)}
               placeholder="Add any additional notes or details..."
               rows={8}
-              className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all resize-none"
+              className="w-full px-4 py-3 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all resize-none"
             />
           </div>
         </div>
