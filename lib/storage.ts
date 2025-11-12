@@ -1,4 +1,5 @@
 import { ItineraryItem, NewItineraryItem } from '@/types/itinerary';
+import { validateItineraryItem } from '@/lib/validation';
 
 const STORAGE_KEY = 'tripper_itinerary_items';
 
@@ -24,10 +25,16 @@ export const storage = {
   },
 
   addItem: (item: NewItineraryItem): ItineraryItem => {
+    // Validate and sanitize input
+    const validation = validateItineraryItem(item);
+    if (!validation.isValid) {
+      throw new Error(`Validation failed: ${validation.errors.join(', ')}`);
+    }
+
     const items = storage.getItems();
     const now = Date.now();
     const newItem: ItineraryItem = {
-      ...item,
+      ...validation.sanitized,
       id: crypto.randomUUID(),
       createdAt: now,
       updatedAt: now,
@@ -42,9 +49,21 @@ export const storage = {
     const index = items.findIndex(item => item.id === id);
     if (index === -1) return null;
 
-    const updatedItem: ItineraryItem = {
+    // Merge current item with updates for validation
+    const itemToValidate = {
       ...items[index],
       ...updates,
+    };
+
+    // Validate and sanitize input
+    const validation = validateItineraryItem(itemToValidate);
+    if (!validation.isValid) {
+      throw new Error(`Validation failed: ${validation.errors.join(', ')}`);
+    }
+
+    const updatedItem: ItineraryItem = {
+      ...items[index],
+      ...validation.sanitized,
       updatedAt: Date.now(),
     };
     items[index] = updatedItem;
