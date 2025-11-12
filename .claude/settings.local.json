@@ -5,7 +5,11 @@
       "Bash(node --version)",
       "Bash(npm --version:*)",
       "Bash(git init:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nInitial commit: Travel itinerary app with Next.js, TypeScript, and Tailwind CSS\n\nFeatures:\n- Left sidebar with list of itinerary entries\n- Center panel for viewing and editing entry details\n- LocalStorage persistence\n- Clean, modern UI with Tailwind CSS\n- Support for URLs, addresses, and notes\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git config:*)",
+      "Bash(git remote add:*)",
+      "Bash(git push:*)"
     ],
     "deny": [],
     "ask": []
