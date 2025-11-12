@@ -1,6 +1,7 @@
 'use client';
 
 import { ItineraryItem } from '@/types/itinerary';
+import ThemeToggle from './ThemeToggle';
 
 interface ItineraryListProps {
   items: ItineraryItem[];
@@ -16,10 +17,13 @@ export default function ItineraryList({
   onAdd,
 }: ItineraryListProps) {
   return (
-    <div className="h-full bg-white border-r border-gray-200 flex flex-col">
+    <div className="h-full bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-700 flex flex-col">
       {/* Header */}
-      <div className="p-6 border-b border-gray-200">
-        <h1 className="text-2xl font-bold text-gray-900 mb-4">Tripper</h1>
+      <div className="p-6 border-b border-gray-200 dark:border-gray-700">
+        <div className="flex items-center justify-between mb-4">
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Tripper</h1>
+          <ThemeToggle />
+        </div>
         <button
           onClick={onAdd}
           className="w-full bg-primary-600 hover:bg-primary-700 text-white font-medium py-2.5 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2"
@@ -44,7 +48,7 @@ export default function ItineraryList({
       {/* List */}
       <div className="flex-1 overflow-y-auto">
         {items.length === 0 ? (
-          <div className="p-6 text-center text-gray-500">
+          <div className="p-6 text-center text-gray-500 dark:text-gray-400">
             <p className="text-sm">No entries yet.</p>
             <p className="text-sm mt-1">Click &quot;New Entry&quot; to get started.</p>
           </div>
@@ -56,16 +60,16 @@ export default function ItineraryList({
                 onClick={() => onSelect(item.id)}
                 className={`w-full text-left p-4 rounded-lg mb-2 transition-all duration-150 ${
                   selectedId === item.id
-                    ? 'bg-primary-50 border-2 border-primary-500'
-                    : 'bg-gray-50 hover:bg-gray-100 border-2 border-transparent'
+                    ? 'bg-primary-50 dark:bg-primary-900/30 border-2 border-primary-500'
+                    : 'bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 border-2 border-transparent'
                 }`}
               >
-                <h3 className="font-semibold text-gray-900 mb-1 truncate">
+                <h3 className="font-semibold text-gray-900 dark:text-white mb-1 truncate">
                   {item.title || 'Untitled'}
                 </h3>
                 <div className="space-y-1">
                   {item.address && (
-                    <p className="text-xs text-gray-600 truncate flex items-center gap-1">
+                    <p className="text-xs text-gray-600 dark:text-gray-400 truncate flex items-center gap-1">
                       <svg
                         className="w-3.5 h-3.5 flex-shrink-0"
                         fill="none"
@@ -89,7 +93,7 @@ export default function ItineraryList({
                     </p>
                   )}
                   {item.url && (
-                    <p className="text-xs text-gray-600 truncate flex items-center gap-1">
+                    <p className="text-xs text-gray-600 dark:text-gray-400 truncate flex items-center gap-1">
                       <svg
                         className="w-3.5 h-3.5 flex-shrink-0"
                         fill="none"
